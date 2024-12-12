@@ -35,6 +35,7 @@ import {
 import Facet from './components/FacetSection/Facet';
 import { SearchSection } from './components/SearchSection/SearchSection';
 import { FacetSection } from './components/FacetSection/FacetSection';
+import { ResultsSection } from "./components/ResultsSection/ResultsSection";
 
 
 
@@ -73,7 +74,7 @@ export const App = () => {
             <FacetSection />
           </div>
           <div className="results-pagination">
-            <AtomicResultList display="grid" template={MyResultTemplateFunction} />
+            <ResultsSection />
             <AtomicLayoutSection section="pagination">
               <div className="pager-resultsPerPage">
               <div>

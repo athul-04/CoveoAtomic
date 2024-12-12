@@ -33,3 +33,15 @@ code {
   justify-content:space-between;
 
 }
+
+.result-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.result-box{
+  width:20rem;
+  height:20rem;
+  margin:1rem;
+}
