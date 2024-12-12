@@ -68,7 +68,7 @@ export const App = () => {
 
   return (
     <AtomicSearchInterface engine={atomicEngine}>
-        <SearchSection />
+          <SearchSection />
         <div className="facet-result-container">
           <div className="facet">
             <FacetSection />

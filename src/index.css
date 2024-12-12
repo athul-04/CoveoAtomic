@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding:0;
+  box-sizing: border-box;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -41,7 +44,7 @@ code {
 }
 
 .result-box{
-  width:20rem;
+  width:20%;
   height:20rem;
   margin:1rem;
 }
