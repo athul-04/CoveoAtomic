@@ -5,6 +5,7 @@ import {
   SearchEngine,
 } from "@coveo/headless";
 
+
 const FIELDS = [
     "book_name",
     "book_type",

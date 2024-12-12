@@ -1,12 +1,12 @@
 import {
-    FacetSearch as HeadlessFacetSearch,
+  FacetSearch as FacetSearchController,
     FacetSearchState,
   } from '@coveo/headless';
   import React from 'react';
   import {FunctionComponent} from 'react';
   
   export interface FacetSearchProps {
-    controller: HeadlessFacetSearch;
+    controller: FacetSearchController;
     facetSearchState: FacetSearchState;
   }
   
