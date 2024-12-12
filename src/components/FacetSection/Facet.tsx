@@ -1,8 +1,8 @@
 
 import { Facet as FacetController } from '@coveo/headless';
 import { useEffect, useState, FunctionComponent } from 'react';
-import { FacetSearch } from './FacetSearch.tsx';
-
+import { FacetSearch } from './FacetSearch';
+import React from 'react';
 interface FacetProps {
   controller: FacetController;
   title: string;
@@ -11,12 +11,12 @@ interface FacetProps {
 const Facet: FunctionComponent<FacetProps> = (props) => { 
   const { controller } = props;
   const [state, setState] = useState(controller.state);
-
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
-
+  useEffect(() => {
+    controller.subscribe(() => setState(controller.state));
+  }, [controller]);
   if (!state.values.length) {
     return (
-      <div className="facet">
+      <div className="fact">
       <h3>{props.title}</h3>
       <div>No facet values</div>
     </div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { atomicEngine } from "./Engine/Engine.ts"
-import { fileTypeFacet } from './controllers/controllers.ts';
+import React from "react";
+import { atomicEngine } from "./Engine/Engine"
+import { fileTypeFacet } from './controllers/controllers';
 import {
   AtomicResultSectionVisual,
   AtomicResultImage,
@@ -32,7 +32,9 @@ import {
   loadFieldActions,
   SearchEngine,
 } from "@coveo/headless";
-import Facet from './components/Facet.tsx';
+import Facet from './components/FacetSection/Facet';
+import { SearchSection } from './components/SearchSection/SearchSection';
+import { FacetSection } from './components/FacetSection/FacetSection';
 
 
 
@@ -54,7 +56,7 @@ const MyDefaultTemplate:React.FC<{result:Result}> = ({result}) => (
       </>
 );
 
-const MyResultTemplateFunction: JSX.Element = (result: Result) => {
+const MyResultTemplateFunction = (result: Result) => {
   return <MyDefaultTemplate result={result}/>;
 };
 
@@ -65,34 +67,32 @@ export const App = () => {
 
   return (
     <AtomicSearchInterface engine={atomicEngine}>
-      <AtomicLayoutSection section="search">
-          <AtomicSearchBox/>
-      </AtomicLayoutSection>
-      <AtomicLayoutSection section="facets">
-          <AtomicFacetManager>
-            {/* <AtomicAutomaticFacetGenerator></AtomicAutomaticFacetGenerator> */}
-            <Facet controller={fileTypeFacet} title="My Facet"></Facet>
-          </AtomicFacetManager>
-      </AtomicLayoutSection>
-      <AtomicLayoutSection section="main">
-        <AtomicLayoutSection section="status">
-
-        </AtomicLayoutSection>
-        <AtomicLayoutSection section="result">
-          <AtomicResultList display="grid" template={MyResultTemplateFunction} />
-        </AtomicLayoutSection>
-        <AtomicLayoutSection section="pagination">
-          <AtomicLoadMoreResults></AtomicLoadMoreResults>
-          <AtomicPager></AtomicPager>
-          <AtomicResultsPerPage choicesDisplayed="5,10,15,20"></AtomicResultsPerPage>
-        </AtomicLayoutSection>
-      </AtomicLayoutSection>
+        <SearchSection />
+        <div className="facet-result-container">
+          <div className="facet">
+            <FacetSection />
+          </div>
+          <div className="results-pagination">
+            <AtomicResultList display="grid" template={MyResultTemplateFunction} />
+            <AtomicLayoutSection section="pagination">
+              <div className="pager-resultsPerPage">
+              <div>
+                <AtomicPager></AtomicPager>
+              </div>
+              <div>
+                  <AtomicResultsPerPage choicesDisplayed="12,24,32,64"></AtomicResultsPerPage>
+              </div>
+              </div>
+              
+          </AtomicLayoutSection>
+          </div>
+        </div>
     </AtomicSearchInterface>
   );
 };
 
 
-{/* <AtomicSearchBoxInstantResults
+/* <AtomicSearchBoxInstantResults
       template={() => {
         return (
           <>
@@ -108,4 +108,25 @@ export const App = () => {
           </>
         );
       }}
-      />  */}
+      />  */
+
+
+{/* <AtomicSearchInterface engine={atomicEngine}>
+        <SearchSection />
+        <div>
+          <FacetSection />
+        </div>
+      <AtomicLayoutSection section="main">
+        <AtomicLayoutSection section="status">
+
+        </AtomicLayoutSection>
+        <AtomicLayoutSection section="results">
+          <AtomicResultList display="grid" template={MyResultTemplateFunction} />
+        </AtomicLayoutSection>
+        <AtomicLayoutSection section="pagination">
+          <AtomicLoadMoreResults></AtomicLoadMoreResults>
+          <AtomicPager></AtomicPager>
+          <AtomicResultsPerPage choicesDisplayed="5,10,15,20"></AtomicResultsPerPage>
+        </AtomicLayoutSection>
+      </AtomicLayoutSection>
+    </AtomicSearchInterface> */}

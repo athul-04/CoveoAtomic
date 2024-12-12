@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.facet-result-container{
+  display: flex;
+}
+
+.facet{
+  flex:1;
+}
+
+.results-pagination{
+  flex:4;
+
+}
+
+.pager-resultsPerPage{
+  padding-top: 5%;
+  padding-right: 2%;
+  padding-bottom: 7%;
+  display: flex;
+  justify-content:space-between;
+
+}

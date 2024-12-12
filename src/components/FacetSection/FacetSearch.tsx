@@ -2,6 +2,7 @@ import {
     FacetSearch as HeadlessFacetSearch,
     FacetSearchState,
   } from '@coveo/headless';
+  import React from 'react';
   import {FunctionComponent} from 'react';
   
   export interface FacetSearchProps {

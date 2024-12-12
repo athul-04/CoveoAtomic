@@ -7,6 +7,7 @@ import {
 
 const FIELDS = [
     "book_name",
+    "book_type",
 ];
 
 const registerAdditionalFields = (headlessEngine: SearchEngine) => {
