@@ -18,29 +18,27 @@ import {
   
     const searchResultsStyle = {
       listStyleType: 'none',
+      
     };
   
     return (
-      <div>
-        <input
+      <div className='facet-search-bar'>
+        <input 
           value={props.facetSearchState.query}
           onInput={(e) => updateSearch(e.currentTarget.value)}
         />
+        
+        <div className='facet-search-suggestions-div'>
         {props.facetSearchState.query !== '' && (
-          <ul style={searchResultsStyle}>
+          <ul style={searchResultsStyle} className='searchSuggestions'>
             {props.facetSearchState.values.map((facetSearchValue) => (
-              <li key={facetSearchValue.rawValue}>
-                <button
-                  onClick={() => {
-                    props.controller.select(facetSearchValue);
-                  }}
-                >
+              <li key={facetSearchValue.rawValue} onClick={()=>props.controller.select(facetSearchValue)} className='searchSuggestionsValue'>
                   {facetSearchValue.displayValue} ({facetSearchValue.count})
-                </button>
               </li>
             ))}
           </ul>
         )}
+        </div>
       </div>
     );
   };

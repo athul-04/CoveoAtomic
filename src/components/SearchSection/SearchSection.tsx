@@ -3,9 +3,11 @@ import React from 'react';
 export const SearchSection=()=>{
     return (
         <>
-            <AtomicLayoutSection section="search">
-                <AtomicSearchBox/>
-            </AtomicLayoutSection>
+            <div className="searchLayoutDiv">
+                <AtomicLayoutSection section="search" className="searchLayoutSection">
+                    <AtomicSearchBox />
+                </AtomicLayoutSection>
+            </div>
         </>
     )
 }

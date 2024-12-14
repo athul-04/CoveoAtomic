@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { atomicEngine } from "./Engine/Engine"
-import { bookType } from './controllers/controllers';
-
+// import { bookType, fileTypeFacet } from './controllers/controllers';
 import {
   AtomicResultSectionVisual,
   AtomicResultImage,
@@ -27,8 +26,9 @@ import {
   AtomicLoadMoreResults,
   AtomicResultsPerPage,
   AtomicBreadbox,
+  AtomicDidYouMean,
 } from '@coveo/atomic-react';
-import { buildSearchEngine, FacetValueRequest, loadDidYouMeanActions, loadFacetSetActions, loadQueryActions, loadQuerySetActions } from '@coveo/headless';
+import { buildSearchEngine } from '@coveo/headless';
 import { Result } from '@coveo/headless';
 import { 
   loadFieldActions,
@@ -39,8 +39,6 @@ import { SearchSection } from './components/SearchSection/SearchSection';
 import { FacetSection } from './components/FacetSection/FacetSection';
 import { ResultsSection } from "./components/ResultsSection/ResultsSection";
 import { StatusSection } from "./components/StatusSection/StatusSection";
-
-import ResultSectionAtomic from "./components/ResultSectionAtomic/ResultSectionAtomic";
 
 
 
@@ -69,18 +67,16 @@ const MyResultTemplateFunction = (result: Result) => {
 
 
 export const App = () => {
+  useEffect(() => {
+    // Subscribe to the engine state changes
+    const unsubscribe = atomicEngine.subscribe(() => {
+      const currentState = atomicEngine.state;
+      console.log('Atomic Engine State Updated:', currentState);
+    });
 
-  
-  // useEffect(() => {
-  //   // Subscribe to the engine state changes
-  //   const unsubscribe = atomicEngine.subscribe(() => {
-  //     const currentState = atomicEngine.state;
-  //     console.log('Atomic Engine State Updated:', currentState);
-  //   });
-
-  //   // Cleanup subscription on component unmount
-  //   return () => unsubscribe();
-  // }, []);
+    // Cleanup subscription on component unmount
+    return () => unsubscribe();
+  }, []);
 
   // const handleEngineStateChange = (state: typeof atomicEngine.state) => {
   //   // Check if facetSet exists and handle selected facet values
@@ -94,18 +90,6 @@ export const App = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   const unsubscribe=atomicEngine.subscribe(()=>{
-  //     if(atomicEngine.state.didYouMean?.wasCorrectedTo!=""){
-  //       console.log("Query Corrected : ",atomicEngine.state.didYouMean?.wasCorrectedTo);
-  //       console.log("Query Corrected : ",atomicEngine.state.didYouMean?.originalQuery);
-  //     }
-  //   })
-    
-  //   return () => unsubscribe();
-  // },[]);
-
-
   return (
     <AtomicSearchInterface engine={atomicEngine}>
           <div className="logo-search">
@@ -116,12 +100,13 @@ export const App = () => {
           </div>
         <div className="facet-result-container">
           <div className="facets">
-            <FacetSection />
+            <AtomicFacet field={"book_type"} />
           </div>
           <div className="results-pagination">
-            <StatusSection />
-            {/* <ResultsSection /> */}
-            <ResultSectionAtomic />
+          <AtomicDidYouMean  queryCorrectionMode={"next"}/>
+            <AtomicBreadbox />
+            
+            <ResultsSection />
             <AtomicLayoutSection section="pagination">
               <div className="pager-resultsPerPage">
               <div>

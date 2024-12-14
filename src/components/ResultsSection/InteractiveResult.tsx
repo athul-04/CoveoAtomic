@@ -25,7 +25,7 @@ export const InteractiveResult: FunctionComponent<InteractiveResultProps> = (
       onTouchStart={() => controller.beginDelayedSelect()}
       onTouchEnd={() => controller.cancelPendingSelect()}
     >
-      {props.children}
+     {props.children}
     </a>
   );
 };

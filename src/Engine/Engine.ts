@@ -1,4 +1,4 @@
-import { buildSearchEngine } from '@coveo/headless';
+import { buildSearchEngine, loadDidYouMeanActions } from '@coveo/headless';
 import { Result } from '@coveo/headless';
 import { 
   loadFieldActions,
@@ -20,7 +20,7 @@ const registerAdditionalFields = (headlessEngine: SearchEngine) => {
 const engine = buildSearchEngine({
   configuration: {
     organizationId: "athulrobertperficientcomcoralminnow9tm41fgv",
-  accessToken: "",
+  accessToken: "xx1c640b65-5834-47f5-a1ec-ef6a37f53d90",
   search: {
     pipeline: "BookPipeline",
     searchHub: "BookPage",

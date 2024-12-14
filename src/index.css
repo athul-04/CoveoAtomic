@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/*#423e47*/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:normal;
+    font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding:0;
   box-sizing: border-box;
+  background-color: #F4F4F9;
 }
 
 
@@ -15,13 +20,206 @@ code {
     monospace;
 }
 
+:root {
+  --atomic-primary: #B6254F;
+}
+
+/* LOGO SECTION*/
+.logoClass{
+  padding-top:1.5em;
+
+}
+
+.logo-search{
+  display: flex;
+  background-color:#423e47 ;
+  color:white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+}
+
+.logo{
+  width:110px;
+  height:65px;
+  margin-left: 0.5em;
+  
+  outline-width:thin;
+  outline-color: #FFC857;
+  transition: background-color ease 0.3s;
+}
+
+.logo:hover{
+  background-color: #49454e;
+}
+
+/* SEARCH SECTION */
+
+.searchLayoutDiv{
+  width:40em;
+  margin: auto;
+}
+
+
+
+
+atomic-search-box {
+  --atomic-primary: #B6254F;
+}
+
+atomic-search-box::part(suggestions-wrapper){
+  opacity: 0.85;
+  background-color: #423e47;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: 5px;
+}
+
+
+
+atomic-search-box::part(wrapper){
+  width:30em;
+  margin-top:auto;
+  text-align: center;
+  border:0.13em solid #E5E5E5;
+  
+  border-radius: 10px;
+}
+atomic-search-box::part(wrapper):hover{
+    border-color: #9ea4ac;
+}
+
+
+atomic-search-box::part(submit-icon){
+  color: white;
+}
+
+
+
+.searchLayoutSection{
+  
+}
+
+
+
+/*FACET SECTION*/
+
 .facet-result-container{
   display: flex;
 }
 
 .facet{
+  position: relative;
   flex:1;
+  margin-top: 1.5em;
+  width: fit-content;
 }
+
+.facet h3{
+  color:#2B2B2B;
+  text-align: center;
+  margin: 0.5em 0;
+  transition: color 0.3s ease;
+}
+.facet h3:hover{
+  color:#404040;
+
+}
+
+
+.facet-search-bar{
+  text-align: center;
+}
+
+.facet-search-bar input{
+  width: 13em;
+  height: 1.5em;
+  border:0.1em solid #404040;
+  background-color: #ffffff;
+  padding:0.15em 1em;
+  border-radius: 4px;
+}
+
+.facet ul{
+  list-style-type: none;
+  margin-right: 1.2em;
+}
+
+.facet li {
+  color: #464545;
+  transition: color 0.3s ease;
+}
+
+.facet li.selected-facet{
+  color:#000000 !important;
+}
+
+.facet li:hover{
+  color: #686666;
+}
+.facet{
+  background-color: #e2e1e1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.facet{
+  border: 1px solid #BDBDBD;
+  margin-left:5px;
+}
+
+.facet li input[type="checkbox"] {
+  background-color: red !important;
+}
+
+.facet li input[type="checkbox"]:checked {
+  background-color: red !important; /* Change background color when checked */
+  border-color: red !important; /* Optional: Change border color to match the background */
+  color: red !important;
+}
+
+
+.show-more-btn,.show-less-btn {
+  border: none;
+  background-color:#e2e1e1;
+  cursor: pointer;
+  font-weight:500;
+}
+
+
+.searchSuggestions{
+  position: absolute;
+  width:10em;
+  font-weight:normal;
+  padding:0;
+  top:4.3em;
+  left:3em;
+  background-color: white;
+  z-index: 1;
+  cursor: pointer;
+  border: 0.1px solid black;
+}
+.searchSuggestionsValue{
+  /* border-bottom:0.2px solid black; */
+}
+
+.searchSuggestionsValue:hover{
+  background-color: rgb(202, 200, 200);
+  font-weight:500;
+}
+
+.facet-search-suggestions-div{
+  background-color:#dfdce4;
+}
+
+
+.BreadBoxDiv{
+  height: 2.5em;
+  width:100%;
+}
+
+
+/*PAGINATION*/
 
 .results-pagination{
   flex:4;
@@ -29,7 +227,7 @@ code {
 }
 
 .pager-resultsPerPage{
-  padding-top: 5%;
+  padding-top: 15%;
   padding-right: 2%;
   padding-bottom: 7%;
   display: flex;
@@ -47,4 +245,27 @@ code {
   width:20%;
   height:20rem;
   margin:1rem;
+}
+
+.Result-Section-Atomic{
+  margin-left: 1em;
+}
+
+atomic-result-list::part(outline){
+  height:15em;
+  overflow: hidden;
+}
+
+
+
+
+/* .searchLayoutDiv{
+  
+} */
+
+
+atomic-did-you-mean::part(did-you-mean){
+  width:40px;
+  height: 20px;
+  background-color: red;
 }
