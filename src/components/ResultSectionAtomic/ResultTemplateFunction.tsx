@@ -13,5 +13,5 @@ export const ResultTemplateFunction = (result: Result) => {
     //   return <ResultTemplateForBookPage result={result} />;
     // }
    
-    return <DefaultTemplate />;
+    return <DefaultTemplate result={result}/>;
   };

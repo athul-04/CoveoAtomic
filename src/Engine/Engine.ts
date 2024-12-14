@@ -9,6 +9,8 @@ import {
 const FIELDS = [
     "book_name",
     "book_type",
+    "book_image",
+    "book_price",
 ];
 
 const registerAdditionalFields = (headlessEngine: SearchEngine) => {
@@ -20,7 +22,7 @@ const registerAdditionalFields = (headlessEngine: SearchEngine) => {
 const engine = buildSearchEngine({
   configuration: {
     organizationId: "athulrobertperficientcomcoralminnow9tm41fgv",
-  accessToken: "xx1c640b65-5834-47f5-a1ec-ef6a37f53d90",
+  accessToken: "",
   search: {
     pipeline: "BookPipeline",
     searchHub: "BookPage",

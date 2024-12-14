@@ -111,7 +111,7 @@ atomic-search-box::part(submit-icon){
 .facet{
   position: relative;
   flex:1;
-  margin-top: 1.5em;
+  margin-top: 3.7em;
   width: fit-content;
 }
 
@@ -251,10 +251,26 @@ atomic-search-box::part(submit-icon){
   margin-left: 1em;
 }
 
-atomic-result-list::part(outline){
-  height:15em;
-  overflow: hidden;
+.result-image-default{
+  background-color: red;
+  height: 20px;
+  width: 20px;
 }
+.result-image-default-div{
+  background-color: red;
+  height: 20px;
+  width: 20px;
+}
+atomic-result-list::part(outline){
+  overflow: hidden;
+  height: 30em;
+}
+
+.pa{
+  text-align: center;
+}
+
+
 
 
 
@@ -268,4 +284,25 @@ atomic-did-you-mean::part(did-you-mean){
   width:40px;
   height: 20px;
   background-color: red;
+}
+
+
+atomic-result-list::part(outline){
+  background-color: #FFFFFF;
+  border:1px solid #E0E0E0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+atomic-result-list::part(result-list){
+  background-color: #F8F9FA;
+}
+atomic-result-list::part(outline):hover {
+  transform: scale(1.05); /* Slight zoom-in */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Deeper shadow */
+}
+
+/* Active Effect: Slight Bulge Down */
+atomic-result-list::part(outline):active {
+  transform: scale(0.97); /* Slight zoom-out */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15); /* Lighter shadow */
 }
