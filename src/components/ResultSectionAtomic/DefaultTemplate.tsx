@@ -5,15 +5,19 @@ import React from "react";
 
 export const DefaultTemplate: React.FC<{result:Result}> = ({result}) => {
     var image_url=result.raw.book_image as string;
-    console.log(result.title)
+    // console.log(result.title)
     if (image_url) {
         image_url="	https://books.toscrape.com"+image_url.slice(5);
         
     }
     else image_url="";
-    console.log(image_url);
+    // console.log(image_url);
 
     var TemplateResult=result.title as string;
+    if(TemplateResult.length>0) {
+        let pos=TemplateResult.indexOf("| Books to Scrape - Sandbox");
+        TemplateResult=TemplateResult.slice(0,pos);
+    }
     if(TemplateResult.length>55) {
         TemplateResult=TemplateResult.slice(0,55)+"...";
     }

@@ -63,9 +63,9 @@ code {
 
 
 
-atomic-search-box {
+/* atomic-search-box {
   --atomic-primary: #B6254F;
-}
+} */
 
 atomic-search-box::part(suggestions-wrapper){
   opacity: 0.85;
@@ -111,7 +111,7 @@ atomic-search-box::part(submit-icon){
 .facet{
   position: relative;
   flex:1;
-  margin-top: 3.7em;
+  margin-top: 4.5em;
   width: fit-content;
 }
 
@@ -214,8 +214,19 @@ atomic-search-box::part(submit-icon){
 
 
 .BreadBoxDiv{
-  height: 2.5em;
+  display: flex;
+  margin-right:2em;
+  justify-content: flex-end;
+  height: 4.5em;
   width:100%;
+
+}
+
+.sortable{
+  margin-right:1em;
+  margin-top: auto;
+  padding-bottom: 0.5em;
+  
 }
 
 
@@ -297,12 +308,60 @@ atomic-result-list::part(result-list){
   background-color: #F8F9FA;
 }
 atomic-result-list::part(outline):hover {
-  transform: scale(1.05); /* Slight zoom-in */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Deeper shadow */
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
 }
 
-/* Active Effect: Slight Bulge Down */
+
 atomic-result-list::part(outline):active {
-  transform: scale(0.97); /* Slight zoom-out */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15); /* Lighter shadow */
+  transform: scale(0.97); 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
+
+
+
+
+/*PAGER*/
+
+atomic-pager::part(active-page-button){
+  border-color:white;
+  color:white;
+  background-color: #686666;
+}
+
+atomic-pager::part(page-button):hover{
+border-color:white;
+color:white;
+background-color: #686666;
+}
+
+atomic-pager::part(next-button),atomic-pager::part(previous-button){
+border-color:#423e47;
+  color:#423e47;
+}
+
+
+/*RESULTS PER PAGE*/
+
+atomic-results-per-page::part(label){
+  display: none;
+}
+atomic-results-per-page::part(active-button){
+  border-color:white;
+  color:white;
+  background-color: #686666;
+}
+
+atomic-results-per-page::part(button):hover{
+  border-color:white;
+  color:white;
+  background-color: #686666;
+}
+
+/*Sortable*/
+
+atomic-sort-dropdown::part(label){
+  display: none;
+}
+
+

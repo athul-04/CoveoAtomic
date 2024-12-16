@@ -27,6 +27,8 @@ import {
   AtomicLoadMoreResults,
   AtomicResultsPerPage,
   AtomicBreadbox,
+  AtomicSortDropdown,
+  AtomicSortExpression,
 } from '@coveo/atomic-react';
 import { buildSearchEngine, FacetValueRequest, loadDidYouMeanActions, loadFacetSetActions, loadQueryActions, loadQuerySetActions } from '@coveo/headless';
 import { Result } from '@coveo/headless';
@@ -71,16 +73,16 @@ const MyResultTemplateFunction = (result: Result) => {
 export const App = () => {
 
   
-  // useEffect(() => {
-  //   // Subscribe to the engine state changes
-  //   const unsubscribe = atomicEngine.subscribe(() => {
-  //     const currentState = atomicEngine.state;
-  //     console.log('Atomic Engine State Updated:', currentState);
-  //   });
+  useEffect(() => {
+    // Subscribe to the engine state changes
+    const unsubscribe = atomicEngine.subscribe(() => {
+      const currentState = atomicEngine.state;
+      console.log('Atomic Engine State Updated:', currentState);
+    });
 
-  //   // Cleanup subscription on component unmount
-  //   return () => unsubscribe();
-  // }, []);
+    // Cleanup subscription on component unmount
+    return () => unsubscribe();
+  }, []);
 
   // const handleEngineStateChange = (state: typeof atomicEngine.state) => {
   //   // Check if facetSet exists and handle selected facet values
@@ -120,6 +122,8 @@ export const App = () => {
           </div>
           <div className="results-pagination">
             <StatusSection />
+        
+        
             {/* <ResultsSection /> */}
             <ResultSectionAtomic />
             <AtomicLayoutSection section="pagination">
@@ -128,7 +132,7 @@ export const App = () => {
                 <AtomicPager></AtomicPager>
               </div>
               <div>
-                  <AtomicResultsPerPage choicesDisplayed="12,24,32,64"></AtomicResultsPerPage>
+                  <AtomicResultsPerPage choicesDisplayed="12,24,32,64,128" ></AtomicResultsPerPage>
               </div>
               </div>
               
