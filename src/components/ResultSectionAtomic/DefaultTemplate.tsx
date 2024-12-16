@@ -50,15 +50,15 @@ export const DefaultTemplate: React.FC<{result:Result}> = ({result}) => {
 
 
     return (
-      <div className="Result-Box">
-        <AtomicResultSectionVisual>
+      <div className="Result-Box" >
+        <AtomicResultSectionVisual >
         <div className="result-image-default-div" style={resultImageDefaultDiv}>
             <img className="result-image-default" src={image_url} alt=""  style={resultImage}/>
         </div>
         </AtomicResultSectionVisual >
 
         <div className="pa">
-            <p style={resultTitle}>{TemplateResult}</p> 
+            <AtomicResultLink ><p style={resultTitle}><a href={result.clickUri} target="_blank" rel="noopener noreferrer" style={resultTitle}>{TemplateResult}</a> </p></AtomicResultLink>
         </div>
         <div style={resultBottomSection}>
             <AtomicResultText style={contentColor} field="book_type" />

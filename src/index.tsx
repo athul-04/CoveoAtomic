@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import{ App } from "./App"
-
+import { AtomicSearchInterface } from '@coveo/atomic-react';
+import { atomicEngine } from './Engine/Engine';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AtomicSearchInterface engine={atomicEngine}>
+      <App />
+    </AtomicSearchInterface>
   </React.StrictMode>
 );
 

@@ -26,48 +26,17 @@ import {
   AtomicPager,
   AtomicLoadMoreResults,
   AtomicResultsPerPage,
-  AtomicBreadbox,
-  AtomicSortDropdown,
-  AtomicSortExpression,
 } from '@coveo/atomic-react';
-import { buildSearchEngine, FacetValueRequest, loadDidYouMeanActions, loadFacetSetActions, loadQueryActions, loadQuerySetActions } from '@coveo/headless';
 import { Result } from '@coveo/headless';
 import { 
   loadFieldActions,
   SearchEngine,
 } from "@coveo/headless";
-import Facet from './components/FacetSection/Facet';
-import { SearchSection } from './components/SearchSection/SearchSection';
 import { FacetSection } from './components/FacetSection/FacetSection';
-import { ResultsSection } from "./components/ResultsSection/ResultsSection";
 import { StatusSection } from "./components/StatusSection/StatusSection";
 
 import ResultSectionAtomic from "./components/ResultSectionAtomic/ResultSectionAtomic";
-
-
-
-const MyDefaultTemplate:React.FC<{result:Result}> = ({result}) => (
-  <>
-        <p>
-          {"Title: "}
-          <AtomicResultLink></AtomicResultLink>
-        </p>
-        <p>
-          {"Book Name: "}
-          <AtomicResultText field="book_name"></AtomicResultText>
-        </p>
-        <p>
-          {"Description: "}
-          <AtomicResultText field="excerpt"></AtomicResultText>
-        </p>
-      </>
-);
-
-const MyResultTemplateFunction = (result: Result) => {
-  return <MyDefaultTemplate result={result}/>;
-};
-
-
+import { Navbar } from "./components/Navbar/Navbar";
 
 
 export const App = () => {
@@ -109,13 +78,8 @@ export const App = () => {
 
 
   return (
-    <AtomicSearchInterface engine={atomicEngine}>
-          <div className="logo-search">
-          <div className="logoClass">
-            <img src="/file.png" alt="" className="logo"/>
-          </div>
-          <SearchSection />
-          </div>
+    <div>
+        <Navbar />   
         <div className="facet-result-container">
           <div className="facets">
             <FacetSection />
@@ -139,7 +103,7 @@ export const App = () => {
           </AtomicLayoutSection>
           </div>
         </div>
-    </AtomicSearchInterface>
+    </div>
   );
 };
 

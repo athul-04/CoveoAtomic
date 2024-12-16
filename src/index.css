@@ -20,9 +20,9 @@ code {
     monospace;
 }
 
-:root {
+/* :root {
   --atomic-primary: #B6254F;
-}
+} */
 
 /* LOGO SECTION*/
 .logoClass{
@@ -82,7 +82,6 @@ atomic-search-box::part(wrapper){
   margin-top:auto;
   text-align: center;
   border:0.13em solid #E5E5E5;
-  
   border-radius: 10px;
 }
 atomic-search-box::part(wrapper):hover{
@@ -362,6 +361,16 @@ atomic-results-per-page::part(button):hover{
 
 atomic-sort-dropdown::part(label){
   display: none;
+}
+
+atomic-sort-dropdown::part(select){
+  border: 1px solid #BDBDBD;
+  border-radius:5px;
+  background-color: #e2e1e1;
+}
+
+atomic-sort-dropdown::part(select-separator){
+  border-left-color: #BDBDBD;
 }
 
 
