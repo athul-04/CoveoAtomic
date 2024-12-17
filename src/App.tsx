@@ -37,9 +37,12 @@ import { StatusSection } from "./components/StatusSection/StatusSection";
 
 import ResultSectionAtomic from "./components/ResultSectionAtomic/ResultSectionAtomic";
 import { Navbar } from "./components/Navbar/Navbar";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export const App = () => {
+
+  const dispatch=useDispatch();
 
   
   useEffect(() => {
@@ -47,6 +50,7 @@ export const App = () => {
     const unsubscribe = atomicEngine.subscribe(() => {
       const currentState = atomicEngine.state;
       console.log('Atomic Engine State Updated:', currentState);
+      
     });
 
     // Cleanup subscription on component unmount
@@ -79,6 +83,7 @@ export const App = () => {
 
   return (
     <div>
+      <AtomicSearchInterface engine={atomicEngine}>
         <Navbar />   
         <div className="facet-result-container">
           <div className="facets">
@@ -103,6 +108,7 @@ export const App = () => {
           </AtomicLayoutSection>
           </div>
         </div>
+        </AtomicSearchInterface>
     </div>
   );
 };

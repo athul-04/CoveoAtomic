@@ -48,6 +48,28 @@ code {
   outline-color: #FFC857;
   transition: background-color ease 0.3s;
 }
+.cartImage{
+  width:45px;
+  height: 40px;
+  margin-bottom: 0em;
+  
+}
+.cartClass{
+  position: relative;
+  margin-right: 2em;
+  height: fit-content;
+  padding: 0px;
+  margin-top: 1.7em;
+}
+.itemsInCart{
+  position: absolute;
+  top: 1px;
+  background-color: red;
+  width: 20px;
+  text-align: center;
+  border-radius: 20em;
+}
+
 
 .logo:hover{
   background-color: #49454e;
@@ -257,6 +279,10 @@ atomic-search-box::part(submit-icon){
   margin:1rem;
 }
 
+.Result-Box{
+  pointer-events: none;
+  cursor:not-allowed;
+}
 .Result-Section-Atomic{
   margin-left: 1em;
 }
@@ -280,6 +306,11 @@ atomic-result-list::part(outline){
   text-align: center;
 }
 
+
+.cartButton{
+  background-color: red;
+  
+}
 
 
 
