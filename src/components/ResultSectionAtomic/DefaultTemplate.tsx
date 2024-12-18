@@ -10,7 +10,8 @@ import { AppDispatch, cartActions } from "../Store/Store";
 interface cartItemStruct{
     id: string,
     pic:string,
-    title:string
+    title:string,
+    price:Number,
 }
 
 interface childrenProps{
@@ -38,8 +39,8 @@ export const DefaultTemplate: React.FC<childrenProps> = (props) => {
         let pos=TemplateResult.indexOf("| Books to Scrape - Sandbox");
         TemplateResult=TemplateResult.slice(0,pos);
     }
-    if(TemplateResult.length>55) {
-        TemplateResult=TemplateResult.slice(0,55)+"...";
+    if(TemplateResult.length>25) {
+        TemplateResult=TemplateResult.slice(0,25)+"...";
     }
 
     
@@ -48,13 +49,14 @@ export const DefaultTemplate: React.FC<childrenProps> = (props) => {
             id: result.uniqueId,
             pic: image_url,
             title: name,
+            price: Number(result.raw.book_price_float),
         }
         console.log(newCartItem);
         dispatch(cartActions.addItem(newCartItem))
     }
     
     return (
-      <div  onClick={(e)=>e.stopPropagation()}>
+      <div  style={defaultDiv} onClick={(e)=>e.stopPropagation()}>
         <AtomicResultSectionVisual >
         <div className="result-image-default-div" style={resultImageDefaultDiv}>
             <img className="result-image-default" src={image_url} alt=""  style={resultImage}/>
@@ -103,13 +105,25 @@ const contentColor={
 }
 
 const cartButton={
-    backgroundColor:"red",
-    textAlign:"center" as const,     
+    marginLeft:"4em",
+    marginBottom:"1em",
+    padding:"5px",
+    backgroundColor:"rgb(248, 248, 94)",
+    textAlign:"center" as const, 
+    width:"50%",
+    borderRadius:"5px",
 }
 const addToCart={
-    textAlign:"center" as const,     
-    marginTop:"1em",
-    zIndex:"1",
-    height:"5em",
+    display: "flex",
+    textAlign: "center" as const,
+    marginTop: "1em",
+    height: "5em",
+    padding: "0px",
+    justifyContent: "flex-end" as const,
+    flexDirection: "column" as const,
+}
+
+const defaultDiv={
+    display:"relative",
 
 }

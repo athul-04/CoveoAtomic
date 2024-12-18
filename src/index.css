@@ -12,6 +12,7 @@ body {
   padding:0;
   box-sizing: border-box;
   background-color: #F4F4F9;
+  position: relative;;
 }
 
 
@@ -63,7 +64,8 @@ code {
 }
 .itemsInCart{
   position: absolute;
-  top: 1px;
+  top: 0px;
+  background-color: rgb(248, 248, 94);
   background-color: red;
   width: 20px;
   text-align: center;
@@ -220,6 +222,84 @@ atomic-search-box::part(submit-icon){
   cursor: pointer;
   border: 0.1px solid black;
 }
+
+.cart-items{
+  
+  position: absolute;
+  z-index: 1;
+  width: 25em;
+  top:5em;
+  right:0.8em;
+  background-color:#dfdfdf;
+  border-radius:30px;
+  border:0.1px solid #423e47;
+  box-shadow: 0 10px 5px rgba(0,0,0,0.1);
+  color:white;
+}
+.cart-items-ul{
+  list-style-type:none;
+  padding-left:0px;
+  text-align: center;
+  padding:5px;
+}
+.cart-items-li{
+  height:fit-content;
+  padding:5px;
+  margin-bottom: 2px;
+  color:black;
+}
+.cart-items-li:hover{
+  padding:6px;
+  background-color: #ebeaea;;
+  transition: all ease 0.3s;
+}
+.cart-items-remove-btn-div{
+  width:4em;
+}
+
+.cart-items-remove-btn{
+  margin-top:1em;
+  width: 3em;
+  height:2em;
+  background-color: rgb(245, 81, 81);
+  /* width:2.5em; */
+  border-color:white;
+  color:white;
+  font-weight:bold;
+  border-radius: 16px;
+}
+.cart-items-remove-btn:hover{
+  width:3.2em;
+  height:2.2em;
+  background-color: red;
+  transition: all ease 0.3s;
+}
+.cart-items-li-name{
+  padding-bottom:2em;
+  width:7em;
+}
+
+.cart-items-li-container{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.cart-items-display-none{
+  display: none;
+}
+
+.cart-items-img{
+  width:4em;
+  height:5em;
+}
+.total-price-div{
+  text-align: center;
+  color:#000000
+}
+.total-price-span{
+  font-weight: bold;
+}
+
 .searchSuggestionsValue{
   /* border-bottom:0.2px solid black; */
 }

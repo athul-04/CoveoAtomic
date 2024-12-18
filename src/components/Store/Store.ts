@@ -5,6 +5,7 @@ interface CartItem {
   id: string;
   pic: string;
   title: string;
+  price: Number;
 }
 
 // Define the initial state with CartItem array type
@@ -17,6 +18,14 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       state.push(action.payload);
+    },
+    removeItem(state,action){
+      console.log("idPassed",action.payload);
+      console.log("",state);
+      const index = state.findIndex((item) => item.id === action.payload.id);
+      if (index !== -1) {
+        state.splice(index, 1); // Remove only the first matching item
+      }
     },
   },
 });

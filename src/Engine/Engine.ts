@@ -11,6 +11,7 @@ const FIELDS = [
     "book_type",
     "book_image",
     "book_price",
+    "book_price_float"
 ];
 
 const registerAdditionalFields = (headlessEngine: SearchEngine) => {
@@ -22,7 +23,7 @@ const registerAdditionalFields = (headlessEngine: SearchEngine) => {
 const engine = buildSearchEngine({
   configuration: {
     organizationId: "athulrobertperficientcomcoralminnow9tm41fgv",
-  accessToken: "",
+  accessToken: "xx1c640b65-5834-47f5-a1ec-ef6a37f53d90",
   search: {
     pipeline: "BookPipeline",
     searchHub: "BookPage",
