@@ -1,116 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { atomicEngine } from "./Engine/Engine"
-import { bookType } from './controllers/controllers';
+import React from "react";
 
-import {
-  AtomicResultSectionVisual,
-  AtomicResultImage,
-  AtomicSearchBoxInstantResults,
-  AtomicResultSectionTitleMetadata,
-  AtomicResultSectionTitle,
-  AtomicResultLink,
-  AtomicResultSectionBottomMetadata,
-  AtomicText,
-  AtomicResultNumber,
-  AtomicFormatUnit,
-  AtomicResultSectionExcerpt,
-  AtomicResultText,
-  AtomicResultSectionEmphasized,
-  AtomicSearchInterface,
-  AtomicResultList,
-  AtomicSearchBox,
-  AtomicLayoutSection,
-  AtomicFacetManager,
-  AtomicFacet,
-  AtomicAutomaticFacetGenerator,
-  AtomicPager,
-  AtomicLoadMoreResults,
-  AtomicResultsPerPage,
-} from '@coveo/atomic-react';
-import { Result } from '@coveo/headless';
-import { 
-  loadFieldActions,
-  SearchEngine,
-} from "@coveo/headless";
-import { FacetSection } from './components/FacetSection/FacetSection';
-import { StatusSection } from "./components/StatusSection/StatusSection";
-
-import ResultSectionAtomic from "./components/ResultSectionAtomic/ResultSectionAtomic";
-import { Navbar } from "./components/Navbar/Navbar";
-import { useDispatch, useSelector } from "react-redux";
-
+import { AtomicSearchPage } from "./AtomicSearchPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ErrorRoute } from "./ErrorRoute";
+import { Purchase } from "./components/Purchase/Purchase";
 
 export const App = () => {
-
-  const dispatch=useDispatch();
-
-  
-  useEffect(() => {
-    // Subscribe to the engine state changes
-    const unsubscribe = atomicEngine.subscribe(() => {
-      const currentState = atomicEngine.state;
-      console.log('Atomic Engine State Updated:', currentState);
-      
-    });
-
-    // Cleanup subscription on component unmount
-    return () => unsubscribe();
-  }, []);
-
-  // const handleEngineStateChange = (state: typeof atomicEngine.state) => {
-  //   // Check if facetSet exists and handle selected facet values
-  //   if (state.facetSet) {
-  //     // const selectedFacets = Object.keys(state.facetSet);
-  //     console.log("This is me", state.facetSet['book_type']['request']['currentValues']);
-
-  //     // console.log('Selected Facets:', selectedFacets);
-
-  //     setSelectedFacets(selectedFacets);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const unsubscribe=atomicEngine.subscribe(()=>{
-  //     if(atomicEngine.state.didYouMean?.wasCorrectedTo!=""){
-  //       console.log("Query Corrected : ",atomicEngine.state.didYouMean?.wasCorrectedTo);
-  //       console.log("Query Corrected : ",atomicEngine.state.didYouMean?.originalQuery);
-  //     }
-  //   })
-    
-  //   return () => unsubscribe();
-  // },[]);
-
+  const routes=createBrowserRouter([
+    {path:"/", element: <AtomicSearchPage/>,errorElement:<ErrorRoute/>},
+    {path:"/purchase",element:<Purchase />,errorElement:<ErrorRoute/>}
+  ])
 
   return (
-    <div>
-      <AtomicSearchInterface engine={atomicEngine}>
-        <Navbar />   
-        <div className="facet-result-container">
-          <div className="facets">
-            <FacetSection />
-          </div>
-          <div className="results-pagination">
-            <StatusSection />
-        
-        
-            {/* <ResultsSection /> */}
-            <ResultSectionAtomic />
-            <AtomicLayoutSection section="pagination">
-              <div className="pager-resultsPerPage">
-              <div>
-                <AtomicPager></AtomicPager>
-              </div>
-              <div>
-                  <AtomicResultsPerPage choicesDisplayed="12,24,32,64,128" ></AtomicResultsPerPage>
-              </div>
-              </div>
-              
-          </AtomicLayoutSection>
-          </div>
-        </div>
-        </AtomicSearchInterface>
-    </div>
-  );
+    <RouterProvider router={routes} />
+  )
 };
 
 

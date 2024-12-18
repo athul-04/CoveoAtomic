@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SearchSection } from "../SearchSection/SearchSection";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../Store/Store";
+import { Link } from "react-router-dom";
 
 export const Navbar=()=>{
     const [clicked,setClicked]=useState(false);
@@ -69,6 +70,8 @@ export const Navbar=()=>{
                 </ul>
                 <div className="total-price-div">
                     <p>Total Price : <span className="total-price-span">{total_price}</span></p>
+                    <Link className="purchase-btn"  to="/purchase">Purchase</Link>
+                    
                 </div>
             </div>
             </div>
