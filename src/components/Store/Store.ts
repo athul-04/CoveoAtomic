@@ -27,6 +27,9 @@ const cartSlice = createSlice({
         state.splice(index, 1); // Remove only the first matching item
       }
     },
+    removeAll(state){
+      state.splice(0,state.length);
+    }
   },
 });
 
